@@ -17,6 +17,30 @@
     <div>today is <span class="block">yesterday</span></div>
     
     <script>
+        /*
+            var 函数级别作用域 函数内生命函数外不可用
+            let 块级作用域 花括号
+
+        */
+        {
+            let a = 10;
+            var b = 20
+        }
+        // console.log(b)
+        // console.log(a)
+        for (let index = 0; index < 10; index++) {//可多用i 只在本for生效（闭包）
+            // const element = array[index];
+        }
+        var a =[];
+        // let不存在变量提升
+        console.log(c)
+        // let c =25;
+        var c =25;
+        //let在同一个作用域不允许重复声明
+        /*
+        Const常量 只读变量 不可改变
+        
+        */
     </script>
   </body>
 </html>
