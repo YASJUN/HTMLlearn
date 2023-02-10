@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>解构赋值</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var users ={
+        name:"abc",
+        age:20
+    }
+    // console.log(users.name)
+    // console.log(users.age)
+
+    //解构赋值简化
+
+    const {name,age} = users;
+    //users解开改成name,age
+    //名字必须为key名称
+    console.log(name)
+    console.log(age)
+
+    //简化函数
+    const {log} = console;
+    log(name,age)
+
+    const {floor,random} = Math;
+    log(random())
+
+    var user = {
+        namea:"tyuu"
+    }
+
+    // let namea = 'qwer'
+    // let {namea} = user;
+
+
+</script>
+</html>

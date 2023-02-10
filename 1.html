@@ -11,6 +11,7 @@
             color: #fff;
         }
     </style>
+    <title>let & const</title>
   </head>
   <body>
     <h1>hello world!</h1>
@@ -39,8 +40,12 @@
         //let在同一个作用域不允许重复声明
         /*
         Const常量 只读变量 不可改变
-        
+        声明之后 不允许改变
+        const和let作用域相同（块级），也不提升常量
+        const声明之后必须立刻初始化 不能之后赋值；
+        和let一样，const也不能重复赋值
         */
+       const PI =3.1415926535;
     </script>
   </body>
 </html>
