@@ -15,8 +15,21 @@
     \u0061 = a
 </body>
 <script>
+    const {log} = console;
     console.log("\u0092");
+    var str = "Hello world"
+    for (let i of str) {
+        console.log(i)
+    }
 
-
+    //动态创建一个a标签，href要求动态
+    var ahref = "htttps://projectbs.cn"
+    var atext = "防灾企划"
+    //动态A标签地址
+    var a1 = "<a href='"+ahref+"'>"+atext+"</a>"
+    //字符串模板 反引号标记
+    var ahref2 = `<a href="${ahref}">${atext}</a>`
+    log(a1)
+    log(ahref2)
 </script>
 </html>

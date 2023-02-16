@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const {log} = console;
+    var text = "hello world!"
+    //判断是否包含指定字符串
+    log(text.includes("hello"))//true
+    log(text.includes("helle"))//false
+    //判断是否指定字符串开头
+    log(text.startsWith("he"))//true
+    //判断是否指定字符串结尾
+    log(text.endsWith("hel"))//false
+    //以上支持第二参数，指定位置开始搜索
+    log(text.includes("hello",6))//false
+
+    //repeat 返回新字符串，表示重复源字符串几次
+    var x="x";
+    log(x.repeat(12))
+    //padstart/end 字符串补全
+    var h = "hallo";
+    log(h.padStart(10,"wo"))//wowowhallo
+    log(h.padEnd(10,"233"))//hallo23323
+    //trim start/end 消除字符串前后空格
+    var space = "  hello world  "
+    log(space)
+    log(space.trim())
+    log(space.trimStart())
+    log(space.trimEnd())
+    //at 下标寻找字符 超出位置返回undefined
+    var texta = "0123456789"
+    log(texta.at(3))
+    log(texta.at(0))
+    log(texta.at(-1))
+    log(texta.at(12))
+
+    //扩展运算符 “...” 直接展开数组
+    var arr = [10,20,30,40]
+    for (let i = 0; i < arr.length; i++) {
+        log(arr[i])
+        
+    }
+    log(...arr)//10 20 30 40
+    //求数组最大值
+        log(Math.max.apply(null,arr))
+        //上行代码为将数组赋值给math max 使数组可使用方法 使用到this*
+        //等同于：
+        log(Math.max(10,20,30,40))
+        log(Math.max(...arr))
+    //用于代替函数apply方法
+    //也可以合并数组
+    var arr2 = [50,60,70,80]
+    log(arr.concat(arr2))//合并数组
+    log(...arr,...arr2)
+    log([...arr,...arr2])
+</script>
+</html>
