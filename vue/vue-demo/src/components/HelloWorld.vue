@@ -23,7 +23,10 @@
     <ul>
       <li @click="clickitem(item)" v-for="(item,index) in names" :key="index">{{ item }}</li>
     </ul>
+    <input type="text" v-model="username">
+    <p>{{ username }}</p>
   </div>
+
 </template>
 
 <script>
@@ -55,6 +58,7 @@ export default {
       },],
       counter:0,
       names:["alex","Setve","Mecau"],
+      username:"",
     }
   },
   methods: {
