@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>hi,{{name}}</h1>
+    </div>
+    <script>
+        // //设置为 false 以阻止 vue 在启动时生成生产提示。
+        // Vue.config.productionTip = false;
+        
+        // Vue.config.productionTip = false;
+        // const vm = new Vue({
+        // //   el: '#root',//第一种写法
+        //   data: {
+        //     name:"123"
+        //   },
+        // });
+        // const {log} = console;
+        // log(vm)
+        // vm.$mount("#root")//el的第二种写法 mount 挂载
+
+
+
+        // data的两种写法
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+          el: '#root',
+          //data 第一种 对象式
+        //   data: {
+        //     name:"123name"
+        //   },
+        //data第二种写法 函数式
+        // data:function(){//不能写箭头函数 无自己的this 箭头函数只能找到window
+        data(){//简写也可
+            console.log("@@@",this)//this是Vue实例对象
+            return{//注意return括号 
+                name:"function123name"
+            }
+        }
+        });
+    </script>
+</body>
+</html>

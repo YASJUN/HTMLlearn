@@ -5,14 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="js/vue.js"></script>
+    <script src="../js/vue.js"></script>
 </head>
 <body>
     <div class="root">
-        <h1>hi,{{this.name}}</h1>
-    </div>
-    <div class="root">
-        <h1>hi,{{this.name}}</h1>
+        <h1>hi,{{this.name.toUpperCase()}}</h1>
     </div>
     <script>
         //设置为 false 以阻止 vue 在启动时生成生产提示。
@@ -25,10 +22,10 @@
                 //值暂时是一个对象*
                 name:"Siri",
                 age:"18",
+                time:Date.now()
             }
 
         })
-        
         
     </script>
 </body>
