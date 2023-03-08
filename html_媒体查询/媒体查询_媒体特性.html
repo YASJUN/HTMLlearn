@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体特性</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            height: 200px;
+            background-color: gray;
+            text-align: center;
+            line-height: 200px;
+            font-size: 100px;
+        }
+        /* 检测宽度为400像素时，改变样式 */
+        @media (width:600px) {
+           h1{
+             background-color: green;
+           }
+        }
+         /* 检测宽度为小于等于580像素时，改变样式 */
+        @media (max-width:580px){
+            h1{
+                background-color: red;
+            }
+        }
+         /* 检测宽度为大于等于700像素时，改变样式 */
+        @media (min-width:700px){
+            h1{
+                background-color: orange;
+            }
+        }
+        /* 高度600px时 */
+        @media (height:600px){
+            h1{
+                background-color: yellowgreen;
+            }
+        }
+        /* 设备宽度1600时 */
+        @media(device-width:1600px){
+            h1{
+                /* width: 800%; */
+                
+                /* background-image: linear-gradient(45deg,red,yellow,green); */
+                color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>你好hello</h1>
+</body>
+</html>

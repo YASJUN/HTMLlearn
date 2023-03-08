@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运算符</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            height: 200px;
+            background-color: gray;
+            text-align: center;
+            line-height: 200px;
+            font-size: 100px;
+        }
+        /* 且运算 */
+       /* @media (min-width:700px) and (max-width:800px){
+        h1{
+            background-color: #66ccff;
+        }
+       } */
+       /* @media screen and (min-width:700px) and (max-width:800px){
+        h1{
+            background-color: #66ccff;
+        }
+       } */
+
+       /* 或运算 or*/
+       /* @media screen and (max-width:700px),(min-width:800px){
+        h1{
+            background-color: #66ccff;
+        }
+       } */
+       /* 否定运算 */
+       /* @media not screen{
+        h1{
+            background-color: #66ccff;
+        }
+       } */
+       /* 肯定运算(?)  处理IE兼容 直接让ie忽略*/
+       @media only screen {
+        h1{
+            background-color: #66ccff;
+        }
+       }
+    </style>
+</head>
+<body>
+    <h1>你好hello</h1>
+</body>
+</html>
