@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 数据代理 通过一个对象 代理另一个对象的操作 操作包括读/写 -->
+    <div id="root">
+        
+    </div>
+    <script>
+      let obj = {x:100};
+      let obj2 = {y:200};
+        //obj2追加x
+      Object.defineProperty(obj2,'x',{
+        get(){
+            //请求obj2的x时返回obj的x
+            return obj.x;
+        },
+        //当修改obj2的x时 修改obj的x
+        set(value){
+            obj.x = value;
+        }
+      })
+    </script>
+  </body>
+</html>

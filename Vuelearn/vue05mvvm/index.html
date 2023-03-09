@@ -12,14 +12,30 @@
         M Model 模型 :对应data的数据
         V View 视图  :模板
         VM ViewModel 视图模型  ：Vue实例对象
+        data中所有属性都出现在vm中（数据代理）
+        vm所有属性 vue模板都可以直接使用
     -->
     <div id="root">
-        <h1></h1>
+        <h1>名称：{{name}}</h1>
+        <h1>地址:{{address}}</h1>
+        <!-- <h1>1+1={{1+1}}</h1>
+        <h1>test2{{$options}}</h1>
+        <h1>test3{{$emit}}</h1>
+        <h1>test4{{_c}}</h1> -->
     </div>
     <script>
         //设置为 false 以阻止 vue 在启动时生成生产提示。
         Vue.config.productionTip = false;
-        
+        Vue.config.productionTip = false;
+        const vm = new Vue({//vm=ViewModel
+          el: '#root',
+          data: {
+            name:"mingzi",
+            address:"dizhi",
+            a:1
+          },
+        });
+        console.log(vm.address)
     </script>
 </body>
 </html>

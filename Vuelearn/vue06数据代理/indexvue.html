@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+        <h2>name:{{name}}</h2>
+        <h2>address:{{address}}</h2>
+    </div>
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            name:"NAME",
+            address:"ADDRESS"
+          },
+        });
+    </script>
+  </body>
+</html>
