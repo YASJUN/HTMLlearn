@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>全球时区时间</title>
+    <style>
+      .city {
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>全球时区时间</h1>
+      <div v-for="(city, index) in cities" :key="index" class="city">
+        <h2>{{ city.name }}</h2>
+        <p>{{ city.time }}</p>
+      </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          cities: [
+            { name: "伦敦", timezone: "Europe/London" },
+            { name: "纽约", timezone: "America/New_York" },
+            { name: "北京", timezone: "Asia/Shanghai" },
+            { name: "东京", timezone: "Asia/Tokyo" },
+            { name: "悉尼", timezone: "Australia/Sydney" },
+          ],
+        },
+        mounted() {
+          this.timer = setInterval(() => {
+            this.updateTime();
+          }, 1000);
+        },
+        beforeDestroy() {
+          clearInterval(this.timer);
+        },
+        methods: {
+          updateTime() {
+            this.cities.forEach((city) => {
+              const options = {
+                timeZone: city.timezone,
+                hour: "numeric",
+                minute: "numeric",
+                second: "numeric",
+              };
+              const date = new Date().toLocaleString("en-US", options);
+              city.time = date;
+            });
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
