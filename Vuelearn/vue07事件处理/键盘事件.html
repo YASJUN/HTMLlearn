@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- Vue常用的按钮别名修饰符
+    keyup/keydown 在键盘抬起/落下时
+
+    Enter
+    delete
+    esc
+    space
+    tab   ==》  keydown keyup不好用
+    up
+    down
+    left
+    right
+    
+    系统修饰按键 ctrl alt shift meta(win/command) 不能用keyup
+    keyup按下修饰键的时候，按下其他按键，放开时触发
+    keydown 按下就触发 不需要抬起
+    -->
+    <div id="root">
+        <input type="text" placeholder="ctrl" @keyup.ctrl="showinfo">
+        <input type="text" placeholder="13" @keyup.13="showinfo">
+        <input type="text" placeholder="caps-lock" @keyup.caps-lock="showinfo">
+        <input type="text" placeholder="huiche" @keyup.huiche="showinfo">
+        <!-- 可以连续写按键 (Ctrl+Shift+Y 浏览器置顶) -->
+        <input type="text" placeholder="Ctrl+y" @keyup.ctrl.shift.y="showinfo">
+    </div>
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        Vue.config.keyCodes.huiche = 13;
+
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            
+          },
+          methods: {
+            showinfo(event){
+                console.log(event.key)
+                // console.log(event.keyCode)
+                // if(event.keyCode == 13){
+                   return console.log(event.target.value);
+                // }
+
+            }
+          },
+        });
+    </script>
+  </body>
+</html>

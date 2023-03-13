@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+        <h2>Welcome!</h2>
+        <!-- 点击button时找showinfo -->
+        <!-- <button v-on:click="showinfo">点击提示</button> -->
+        <!-- 简写为@ -->
+        <button @click="showinfo1">点击提示1（不传参）</button>
+        <button @click="showinfo2(66,$event)">点击提示2（传参）</button>
+        <!-- 实测可以不写$event -->
+    </div>
+    <script>
+        //函数需要写进vue实例
+        // function showinfo(){
+        //     alert("hello")
+        // }
+        
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            
+          },
+          methods: {
+            showinfo1(event){
+                alert("hello1")
+                // console.log(event.target.innerText)
+                // console.log(this) //此处的this是vm vue实例对象
+            },
+            showinfo2(number,event){
+                // alert("hello2")
+                console.log(number)
+                console.log(event.target.innerText)
+                //实测可以不写event
+                // console.log(this) //此处的this是vm vue实例对象
+            }
+          },
+        });
+    </script>
+  </body>
+</html>
