@@ -8,7 +8,7 @@
         姓 <input type="text" v-model="firstname"><br>
         名 <input type="text" v-model="lastname"><br>
         <!-- slice 字符串截取 -->
-        姓名：<span>{{firstname}}-{{lastname}}</span>
+        姓名：<span>{{fullname()}}</span>
     </div>
     <script>
         //设置为 false 以阻止 vue 在启动时生成生产提示。
@@ -18,6 +18,11 @@
           data: {
             firstname:"张",
             lastname:"三"
+          },
+          methods: {
+            fullname(){
+              return this.firstname+"-"+this.lastname
+            }
           },
         });
     </script>

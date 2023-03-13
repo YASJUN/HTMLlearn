@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+        <h2>今天天气很{{info}}</h2>
+        <!-- click后面简单语句 模板可以读取vm的ishot -->
+        <!-- <button @click="isHot = !isHot;">切换 toggle</button> -->
+        <button @click="toggle">切换 toggle</button>
+    </div>
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            isHot:false,
+          },
+          methods: {
+            toggle(){
+                //取反
+                this.isHot = !this.isHot;
+            }
+          },
+          computed: {
+            // 直接当做普通属性调用不加括号
+            // 任何data中数据变化立即重新计算
+            // 计算属性会缓存
+            info(){
+               return this.isHot?"热":"冷";
+            }
+            // return 必须retrun结果
+          },
+        });
+    </script>
+  </body>
+</html>

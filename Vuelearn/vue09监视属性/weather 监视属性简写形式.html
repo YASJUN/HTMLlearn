@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+        <h2>今天天气很{{info}}</h2>
+        <!-- click后面简单语句 模板可以读取vm的ishot -->
+        <!-- <button @click="isHot = !isHot;">切换 toggle</button> -->
+        <button @click="toggle">切换 toggle</button>
+        <hr>
+        <h3>a的值是:{{numbers.a}}</h3>
+        <button @click="numbers.a++">点击a+1</button>
+        <h3>b的值是:{{numbers.b}}</h3>
+        <button @click="numbers.b++">点击b+1</button>
+    </div>
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            isHot:false,
+            numbers:{
+              a:1,
+              b:1,
+            }
+          },
+          methods: {
+            toggle(){
+                //取反
+                this.isHot = !this.isHot;
+            }
+          },
+          computed: {
+            // 直接当做普通属性调用不加括号
+            // 任何data中数据变化立即重新计算
+            // 计算属性会缓存
+            info(){
+               return this.isHot?"热":"冷";
+            }
+            // return 必须retrun结果
+          },
+          watch: {
+            //正常写法
+            // isHot:{
+            //   // immediate 立即的 初始化时handler立刻调用 
+            //   // immediate:true,
+            //   handler(newVal,oldVal){
+            //     console.log("修改了",newVal,oldVal)
+            //   }
+            // },
+           //简写
+           isHot(newVal,oldVal){
+            console.log("修改了",newVal,oldVal)
+           }
+          }
+        });
+
+
+        // vm正常写法
+        // vm.$watch("isHot",{
+        //     // immediate 立即的 初始化时handler立刻调用 
+        //       immediate:true,
+        //       handler(newVal,oldVal){
+        //         console.log("修改了",newVal,oldVal)
+        //       }
+        // })
+
+        //vm简写
+        vm.$watch("isHot",function(newVal,oldVal){
+          console.log("修改了",newVal,oldVal)
+        })
+    </script>
+  </body>
+</html>
