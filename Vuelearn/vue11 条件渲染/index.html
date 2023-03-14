@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+        <!-- div切换显示隐藏 -->
+        <!-- 使用v-show做条件渲染 -->
+        v-show display:none
+        <h1 v-show="false">welcome to the {{name}}</h1>
+        <h1 v-show="1==3">welcome to the {{name}}</h1>
+
+        <!-- v-if 不展示的dom元素直接删除-->
+        <!-- <h1 v-if="false">welcome to the {{name}}</h1> -->
+        <!-- <h1 v-if="1===3">welcome to the {{name}}</h1> -->
+
+        <h2>当前的N值是：{{n}}</h2>
+        <button @click="n++">点击n++</button>
+        <!-- 根据N值显示div -->
+        <!-- 高切换频率用v-show -->
+        <!-- <div v-show="n==1">Angular</div>
+        <div v-show="n==2">React</div>
+        <div v-show="n==3">Vue</div> -->
+            <!-- 变化频率很低 用v-if 因为在无限增删dom结构-->
+        <!-- <div v-if="n==1">Angular</div>
+        <div v-if="n==2">React</div>
+        <div v-if="n==3">Vue</div> -->
+
+        <!-- v-if和v-else-if 是一组判断 和js中相同 结构不允许被打断-->
+        <!-- <div v-if="n==1">Angular</div> -->
+        <!-- 掠过下两个 因为第一项条件符合 -->
+        <!-- <div v-else-if="n==2">React</div> -->
+        <!-- <div v-else-if="n==3">Vue</div> -->
+        <!-- 等于其他的时候 -->
+        <!-- <div v-else>END</div> -->
+
+        <!-- template 模板  不影响页面结构 不渲染 -->
+        <!-- 只能v-if  v-if与template的配合使用 -->
+        <template v-if="n==1">
+            <h2>11111</h2>
+            <h2>22222</h2>
+            <h2>33333</h2>
+        </template>
+        
+    </div>
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            name:"hollywood",
+            a:true,
+            n:0,
+          },
+        });
+    </script>
+  </body>
+</html>

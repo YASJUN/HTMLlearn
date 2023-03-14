@@ -44,7 +44,9 @@
           },
           watch: {
             firstname(newVal, oldVal){
-              this.fullname = newVal +"-"+this.lastname
+              setTimeout(() => {
+                this.fullname = newVal +"-"+this.lastname
+              }, 1000);
             }, 
             lastname(newVal, oldVal){
               this.fullname = this.firstname +"-"+newVal
