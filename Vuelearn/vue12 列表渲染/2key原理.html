@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- vue列表 先写一个 想生成多个某个dom 就在某个dom上用v-for -->
+    <div id="root">
+        <ul>
+            <!-- 遍历数组 -->
+            <h2>人员列表 遍历数组</h2>
+            <button @click.once="add">添加一个老刘</button>
+            <!-- key p.id 数据唯一标识  -->
+
+            <!-- index为key时
+                  1.拿数据生成虚拟dom（内存出现三个虚拟节点
+                  2.虚拟dom转换为真实dom
+                  input输入文字
+                  3.数据更新
+                  4.根据新数据生成新的虚拟dom
+                  ！初始虚拟dom和新的虚拟dom VUE进行对比
+                  如果对比后不一致(名字) 则重新转换 如果一致(input) 直接复用
+                  所以名字位置改变 input不变
+            -->
+            
+            <li v-for="(p,index) in personList" :key="p.id">
+               {{p.name}} - {{p.age}}
+               <input type="text">
+            </li>
+        </ul>
+    </div>
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            personList:[
+                {id:"01",name:"张三",age:18},
+                {id:"02",name:"李四",age:19},
+                {id:"03",name:"王五",age:20},
+            ],
+          },
+          methods: {
+            add(){
+              const p = {id:"04",name:"老刘",age:40}
+              this.personList.unshift(p)
+            }
+          },
+        });
+    </script>
+  </body>
+</html>
