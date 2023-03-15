@@ -4,11 +4,37 @@
     <script src="../js/vue.js"></script>
   </head>
   <body>
+    <!-- vue列表 先写一个 想生成多个某个dom 就在某个dom上用v-for -->
     <div id="root">
         <ul>
-            <li>xxx-xxx</li>
-            <li>xxx-xxx</li>
-            <li>xxx-xxx</li>
+            <!-- 遍历数组 -->
+            <h2>人员列表 遍历数组</h2>
+            <!-- 形参 在 数据池 -->
+            <!-- p是创建的形参  p已经被赋值personList-->
+            <!-- key 唯一标识 database里的主键-->
+            <!-- v-for="(p,index) in/of personList" :key="index"   p是遍历项 index是索引值 -->
+            <li v-for="p in personList" :key="p.id">
+               {{p.name}} - {{p.age}}
+            </li>
+            <!-- 遍历对象 -->
+            <h2>汽车列表 遍历对象</h2>
+            <!-- 先收到value 后受收到key -->
+            <li v-for="(value,k) in car" :key="k">
+               {{k}} - {{value}}
+            </li>
+            <!-- 遍历字符串 -->
+            <h2>测试遍历字符串</h2>
+            <!-- 先收到字符 后受到字符的位置（索引值 -->
+            <li v-for="(char,index) in str">
+               {{char}} - {{index}}
+            </li>
+
+             <!-- 遍历指定次数 -->
+             <h2>测试遍历字符串</h2>
+             <!-- 先number值 后索引值 -->
+             <li v-for="(num,index) in 10" :key="index">
+                {{num}} - {{index}}
+             </li>
         </ul>
     </div>
     <script>
@@ -21,7 +47,13 @@
                 {id:"01","name":"张三",age:18},
                 {id:"02","name":"李四",age:19},
                 {id:"03","name":"王五",age:20},
-            ]
+            ],
+            car:{
+                name:"A14",
+                price:"122333",
+                color:"black"
+            },
+            str:"hello,World!",
           },
         });
     </script>
