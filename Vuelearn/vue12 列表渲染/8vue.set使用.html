@@ -7,6 +7,16 @@
     <div id="root">
         <h2>name:{{name}}</h2>
         <h2>address:{{address}}</h2>
+        <hr>
+        <button @click="addsex">添加key</button>
+        <h2>stuname:{{student.name}}</h2>
+        <h2 v-if="student.sex">stusex:{{student.sex}}</h2>
+        <h2>sturage:{{student.age.rAge}}</h2>
+        <h2>stusage:{{student.age.sAge}}</h2>
+        <h2>friends</h2>
+        <ul>
+          <li v-for="(f,index) in student.friends" :key="index">{{f.name}}--{{f.age}}</li>
+        </ul>
     </div>
     <script>
         //设置为 false 以阻止 vue 在启动时生成生产提示。
@@ -23,8 +33,14 @@
                 sAge:18,
               },
               friends:[
-                {name:"jerry",age:35}
+                {name:"jerry",age:35},{name:"tonny",age:36}
               ]
+            }
+          },
+          methods: {
+            addsex(){
+              // Vue.set(this.student,"sex","nan")
+              vm.$set(this.student,"sex","bv")
             }
           },
         });

@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <!-- P34 -->
+    <script>
+        let data = {
+            name:"12name",
+            address:"456address",
+        }
+        //创建一个实例对象 来监视
+        const obs = new Observer(data)
+
+        function Observer(obj){
+            //汇总对象属性为一个数组
+            const key = Object.keys(obj)
+
+            key.forEach((k) => {
+               Object.defineProperties(this,k,{
+                get(){
+                    return obj[k]
+                },
+                set(val){
+                    obj[k] = val
+                }
+               })
+            });
+        }
+    </script>
+  </body>
+</html>
