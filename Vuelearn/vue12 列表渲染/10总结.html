@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+        <h1>infomation</h1>
+        <button @click="student.age++">age+1</button>
+        <button @click="addsex">addsex:man</button>
+        <button @click="student.sex = 'helicopter'">changesex:woman</button>
+        <button @click="addfriend"> add friend in first</button><br><br>
+        <button @click="updatefirstfriend">change first name is sam</button>
+        <button @click="addhobby">add hobby</button>
+
+        <h3>studentname:{{student.name}}</h3><br>
+        <h3>studentage:{{student.age}}</h3><br>
+        <h3 v-if="student.sex">studentsex:{{student.sex}}</h3><br>
+        <h3>studenghobby:</h3>
+        <ul>
+            <li v-for="(h,index) in student.hobby" :key="index">{{h}}</li>
+        </ul>
+        <h3>friends</h3>
+        <ul>
+            <li v-for="(f,index) in student.friends" :key="index">{{f.name}}-{{f.age}}</li>
+        </ul>
+    </div>
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            student:{
+                name:"tom",
+                age:18,
+                hobby:["sing","dance","rap","basketball"],
+                friends:[
+                    {name:"jerry",age:35},
+                    {name:"tony",age:40}
+                ]
+            }
+          },
+          methods: {
+            addsex(){
+                // Vue.set(this.student,"sex","man")
+                // vm.$set(this.student,"sex","man")
+                this.$set(this.student,"sex","man")
+            },
+            addfriend(){
+                this.student.friends.unshift({name:"jack",age:17})
+            },
+            updatefirstfriend(){
+                this.student.friends[0].name="sam"
+                //  this.student.friends[0] 对象 有setter getter
+                this.student.friends[0].age=5
+            },
+            addhobby(){
+                this.student.hobby.push("study")
+            }
+          },
+        });
+    </script>
+  </body>
+</html>
