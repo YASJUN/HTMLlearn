@@ -3,6 +3,23 @@
     <meta charset="UTF-8" />
     <script src="../js/vue.js"></script>
   </head>
+  <!-- Vue数据监视原理
+        Vue会监视data中所有层次数据
+
+        对象中的数据使用setter监视  在new Vue的时候就传入监测的数据
+        对象中后添加的默认不追加响应式
+        后添加响应式需要使用
+            Vue.set(target,propName/index,value) 或者
+            vm.$set(target,propName/index,value)
+        
+        数组中的数据 通过包裹数组更新元素的方法实现 
+            1.先调用原生方法 更新数组
+            2.重新解析模板 更新数据
+        在Vue中修改数组一定要用以下方法：
+        push pop shift unshift splice sort reverse
+        Vue.set 或者  vm.$set
+
+    -->
   <body>
     <div id="root">
         <h1>infomation</h1>
@@ -10,8 +27,10 @@
         <button @click="addsex">addsex:man</button>
         <button @click="student.sex = 'helicopter'">changesex:woman</button>
         <button @click="addfriend"> add friend in first</button><br><br>
-        <button @click="updatefirstfriend">change first name is sam</button>
+        <button @click="updatefirstfriend">change first name : sam</button>
         <button @click="addhobby">add hobby</button>
+        <button @click="updatehobby">change first hobby: driver</button>
+        <button @click="removerap">filter hobby remove rap</button>
 
         <h3>studentname:{{student.name}}</h3><br>
         <h3>studentage:{{student.age}}</h3><br>
@@ -57,6 +76,16 @@
             },
             addhobby(){
                 this.student.hobby.push("study")
+            },
+            updatehobby(){
+                // this.student.hobby.splice(0,1,"driver")
+                // Vue.set(this.student.hobby,0,"driver")
+                this.$set(this.student.hobby,0,"driver")
+            },
+            removerap(){
+                this.student.hobby = this.student.hobby.filter((h)=>{
+                    return h!="rap"
+                })
             }
           },
         });
