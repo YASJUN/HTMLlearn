@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>地震列表</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        *{
+            font-family: "OPPOSans";
+        }
+        .first {
+            /* color: red; */
+            display: flex;
+        }
+
+        .main {
+            border: 1px solid transparent;
+            border-right: 0px;
+            height: 98px;
+            width: 246px;
+            margin-top: 0px;
+            background-color: #3f4045;
+            color: white;
+            text-align: center;
+            padding: 0 5px;
+            margin-right: 4px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>最近地震事件列表</h2>
+        <div v-for="(item, index) in quakeList" :key="index">
+            <div v-if="index === 0" class="first">
+                <div class="main">
+                    <span>{{ item.time }}</span>
+                    <span>{{ item.location }}</span>
+                    <span>{{ item.magnitude }}</span>
+                </div>
+                <div>9</div>
+            </div>
+            <div v-else class="other">
+                <span>{{ item.time }}</span>
+                <span>{{ item.location }}</span>
+                <span>{{ item.magnitude }}</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    quakeList: []
+                }
+            },
+            async mounted() {
+                try {
+                    const response = await axios.get('https://api.wolfx.jp/cenc_eqlist.json');
+                    this.quakeList = Object.values(response.data);
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
