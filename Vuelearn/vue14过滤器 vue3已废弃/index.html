@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+    <script src="../js/dayjs.min.js"></script>
+  </head>
+  <body>
+    <!-- // 此章节跳过 -->
+    <div id="root">
+        <h2>显示格式化后的时间</h2>
+        <!-- 计算属性 -->
+        <h3>现在是：{{fmtime}}</h3>
+        <!-- 函数实现 -->
+        <h3>现在是：{{getfmtime()}}</h3>
+        <!-- 过滤器实现 -->
+        <h3>现在是：{{time | timefil}}</h3>
+    </div>
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            time:Date.now(),
+          },
+          methods: {
+            getfmtime(){
+                return dayjs(this.time).format('YYYY/MM/DD HH:mm:ss');
+            }
+          },computed: {
+            // 直接当做普通属性调用不加括号
+            // 任何data中数据变化立即重新计算
+            // 计算属性会缓存
+             fmtime(){
+                return dayjs(this.time).format('YYYY/MM/DD HH:mm:ss');
+             }
+          },
+          filters: {
+            timefil(val){
+                // warning:从 Vue 3.0 开始，过滤器已移除，且不再支持。
+                
+                return dayjs(val).format('YYYY/MM/DD HH:mm:ss');
+                // 此章节跳过
+            }
+          }
+        });
+    </script>
+  </body>
+</html>

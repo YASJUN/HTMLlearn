@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 
+        type= text v-model默认收集value值
+        type= radio v-model默认收集value值 且要给标签配置value值
+        type=checkbox 如果没有配置value属性 v-model 默认收集checked true/false
+                        如果配置了value属性 v-model初始值且是数组 收集的是value组成的数组
+                        v-model .lazy .number .trim
+     -->
+    <div id="root">
+        <form @submit.prevent="demo">
+            <label>账号:<input placeholder="" type="text" v-model.trim="userinfo.account"></input></label><br>
+            <label>密码:<input placeholder="" type="password" v-model="userinfo.password"></input></label><br>
+            性别：
+            男<input type="radio" name="sex" id="" value="male" v-model="userinfo.sex">
+            女<input type="radio" name="sex" id="" value="female" v-model="userinfo.sex"><br>
+            <label>年龄:<input placeholder="" type="text" v-model.number="userinfo.age"></input></label><br>
+            爱好：
+            <!-- 多组勾选框要用数组 -->
+            唱<input type="checkbox" name="" id="" value="sing" v-model="userinfo.hobby">
+            跳<input type="checkbox" name="" id="" value="dance" v-model="userinfo.hobby">
+            Rap<input type="checkbox" name="" id="" value="rap" v-model="userinfo.hobby">
+            篮球<input type="checkbox" name="" id="" value="basketball" v-model="userinfo.hobby"><br>
+            所属校区：
+            <select name="" id="" v-model="userinfo.city">
+                <option value="">请选择校区</option>
+                <option value="bj">北京</option>
+                <option value="sh">上海</option>
+                <option value="gz">广州</option>
+                <option value="sz">深圳</option>
+                <option value="ld">伦敦</option>
+                <option value="dj">东京</option>
+            </select><br>
+            其他信息：
+            <textarea v-model.lazy="userinfo.other"></textarea><br><br>
+            <input type="checkbox" name="" id="" v-model="userinfo.agree">
+            阅读并接受<a href="">《用户协议》</a><br>
+            <button >提交</button>
+        </form>
+    </div>
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+          el: '#root',
+          data: {
+           userinfo:{
+            account:"",
+            password:"",
+            age:"",
+            sex:"male",
+            hobby:[],
+            city:"",
+            other:"",
+            agree:""
+           }
+          },
+          methods: {
+            demo(){
+                // console.log(JSON.stringify(this.$data))
+                console.log(JSON.stringify(this.userinfo))
+            }
+          },
+        });
+    </script>
+  </body>
+</html>

