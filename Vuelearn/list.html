@@ -63,7 +63,7 @@
                     const response = await axios.get('https://api.wolfx.jp/cenc_eqlist.json');
                     this.quakeList = Object.values(response.data);
                 } catch (error) {
-                    console.error(error);
+                    console.error(error); 
                 }
             }
         });
