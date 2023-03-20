@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 生命周期：生命周期回调函数，生命周期函数，生命周期钩子
+        函数名字不可改 内部随意
+        函数中this指向为vm 或 组件实例对象
+
+        常用周期钩子：
+        mounted:发送请求 启动定时器 绑定自定义事件 订阅消息等
+        beforeDestroy 清除定时器 解绑自定义事件 取消消息订阅等
+
+        销毁Vue实例后
+        Vue开发者工具失效
+        自定义事件会失效 原生DOM事件依然有效
+        在beforeDestroy操作数据也不会更新
+    -->
+    <div id="root">
+        <h2 :style="{opacity}">Vue2</h2>
+        <button @click="stop">停止变换</button>
+        <button @click="opacity=1">透明度为1</button>
+    </div>
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            opacity:1
+          },
+          methods: {
+            stop(){
+              
+              this.$destroy()
+            }
+          },
+          //模板解析完毕并把真实dom放入页面后调用(dom挂载完毕)
+          mounted(){
+               this.timer = setInterval(() => {
+                    this.opacity -= 0.1;
+                    if(this.opacity<=0){
+                        this.opacity = 1
+                    }
+                }, 100);
+          },
+          beforeDestroy() { //vue销毁之前
+             clearInterval(this.timer)
+          },
+        })
+
+
+    </script>
+  </body>
+</html>
