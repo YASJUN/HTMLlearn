@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <button id="btn">创建输入框</button>
+    <script>
+        const btn = document.getElementById("btn")
+        btn.onclick = ()=>{
+            const input = document.createElement("input")
+            document.body.appendChild(input)
+            input.focus()
+        }
+    </script>
+  </body>
+</html>

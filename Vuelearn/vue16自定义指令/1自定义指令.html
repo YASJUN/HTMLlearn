@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <!-- 1.定义一个v-big 会把绑定数字放大十倍 -->
+  <!-- 2.定义一个v-fbind 和v-bind类似 但是可以让其绑定的input默认获取焦点 -->
+  <!-- 局部指令： new Vue({directives:{指令名:配置对象}})
+    或者
+    new Vue({directives:{指令名:回调函数}})
+    全局指令：
+    Vue.directive(指令名，对象/函数)
+
+
+    配置对象常用回调   bind    inserted   update
+  
+
+
+
+   -->
+  <body>
+    <div id="root">
+        <h2>当前的n是： <span v-text="n"></span></h2>
+        <h2>放大之后的n是：<span v-big="n"></span></h2>
+        <button @click="n++">n++</button><hr>
+        <input type="text" v-fbind:value="n">
+    </div>
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            n:1,
+          },
+          directives:{
+            // 注意：此处this均为window
+            // 函数何时会被调用
+            // 指令与元素成功绑定时会被调用
+            // 指令所在的模板重新解析时
+            big(Element,binding){
+                Element.innerText = binding.value*Math.PI;
+            //    console.log(Element,binding) 
+            },
+            fbind:{
+                // 指令元素绑定时
+                bind(Element,binding){
+                    Element.value = binding.value
+                },
+                // 指令所在元素在页面上创建时
+                inserted(Element,binding){
+                    Element.focus()
+                },
+                // 模板重新解析时
+                update(Element,binding){
+                    Element.value = binding.value
+                    Element.focus()
+                }
+            }
+          }
+        });
+    </script>
+  </body>
+</html>

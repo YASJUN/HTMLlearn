@@ -2,16 +2,14 @@
   <head>
     <meta charset="UTF-8" />
     <script src="../js/vue.js"></script>
-    <style>
-        [v-cloak] {
-            display: none;
-        }
-    </style>
   </head>
   <body>
     <div id="root">
-        <!-- 用于解决vue未加载时展现 插值语法问题 -->
-        <h1 v-cloak>Version:{{name}}</h1>
+        <!-- v-pre vue不解析 跳过此节点编译  -->
+        <!-- 可跳过 无语法节点 加快速度 -->
+        <H2 v-pre>vue</H2>
+        <h2>当前n值：{{n}}</h2>
+        <button @click="n++">n++</button>
     </div>
     <script>
         //设置为 false 以阻止 vue 在启动时生成生产提示。
@@ -19,7 +17,7 @@
         const vm = new Vue({
           el: '#root',
           data: {
-            name:"1.8.4"
+            n:1,
           },
         });
     </script>
