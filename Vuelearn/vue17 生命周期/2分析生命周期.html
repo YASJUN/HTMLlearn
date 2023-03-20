@@ -33,6 +33,7 @@
                 console.log("n change")
             }
           },
+          //创建流程
          beforeCreate() {  //实例未完全创建出来执行 
              // 第一周期 初始事件 但还未开始数据代理
              console.log("beforeCreate")
@@ -47,6 +48,7 @@
             },
             // 在无DOM目标时，此处停止。
             // 当使用 vm.$mount(el) 给与DOM目标后 继续执行
+        //挂载流程
           beforeMount() { //挂载数据之前
              // 页面挂载之前 数据解析完毕 VNode创建完 但是未修改页面 
             // 所有对Dom的操作 都不奏效
@@ -61,6 +63,7 @@
             // console.log(this)
             // debugger;
           },
+          //更新流程
           beforeUpdate() { //数据更新之前
             // 注意 此时数据更新 页面未更新
             console.log("beforeUpdate")
