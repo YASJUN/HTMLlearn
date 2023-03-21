@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 
+        单单词
+        school
+        School
+        多单词
+        my-school
+        MySchool(需要脚手架)
+
+        不要使用html自带元素名称
+
+
+     -->
+    <div id="root">
+        {{msg}}
+        <!-- 使用组件 -->
+        <my-school></my-school>
+    </div>
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        //定义组件
+        const s = Vue.extend({
+            template:`<div>
+                <h2>name:{{name}}</h2>
+                <h2>address:{{address}}</h2>
+                </div>`,
+            data: function () {
+                return {
+                    name:"names",
+                    address:"tokyo",
+                }
+            }
+        })
+
+
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            msg:"hello Vue!"
+          },
+          //注册组件
+          components:{
+            MySchool:s,
+          }
+        });
+    </script>
+  </body>
+</html>
