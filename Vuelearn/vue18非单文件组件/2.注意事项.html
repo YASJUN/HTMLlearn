@@ -14,7 +14,11 @@
 
         不要使用html自带元素名称
 
+        加入name配置项可以指定在dev工具中的名字
+        
+        组件标签可以单标签 但是在非脚手架情况下会导致后续无法渲染
 
+        const a = Vue.extend(object) 可以简写为 const a = (object)
      -->
     <div id="root">
         {{msg}}
@@ -26,6 +30,7 @@
         Vue.config.productionTip = false;
         //定义组件
         const s = Vue.extend({
+            name:'ataaaaa',
             template:`<div>
                 <h2>name:{{name}}</h2>
                 <h2>address:{{address}}</h2>
@@ -39,6 +44,7 @@
         })
 
 
+        
         const vm = new Vue({
           el: '#root',
           data: {

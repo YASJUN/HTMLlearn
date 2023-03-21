@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+        <school></school>
+    </div>
+    <!-- 组件本为VueComponent的构造函数，是Vue.extend生成的
+        只需要写组件标签， 在Vue解析时会创建school组件的实例对象。
+        即 Vue执行的 new VueComponent(option)
+
+        每次调用vue.extend 返回的都是一个全新的VueComponent
+    
+        -->
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+
+
+        const student = Vue.extend({
+            template:`<div>
+                <h2>stuname:{{name}}</h2>
+                <h2>age:{{age}}</h2>
+                </div>`,
+            data: function () {
+                return {
+                    name:"stuname",
+                    age:18,
+                }
+            }
+        })
+
+
+        //定义组件
+        const school = Vue.extend({
+            template:`<div>
+                <h2>name:{{name}}</h2>
+                <h2>address:{{address}}</h2>
+                </div>`,
+            data: function () {
+                return {
+                    name:"names",
+                    address:"tokyo",
+                }
+            },
+        })
+
+        new Vue({
+            el:"#root",
+            components:{school}
+        })
+    </script>
+  </body>
+</html>
