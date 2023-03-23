@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+        <!-- Vue.prototype === VueComponent.prototype.__proto__ 
+        为了让VC（组件实例对象）也可以访问到Vue原型上的属性和方法
+        在VM上创建属性，VueComponent也可访问到
+        -->
+    </div>
+    <script>
+        //设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+
+        //定义一个构造函数
+        function demo(){
+            this.a =1;
+            this.b = 2;
+        }
+        //创建一个demo实例对象
+        const d = new demo()
+        //prototype 显示原型属性
+        // __proto__ 隐式原型属性
+        // 都指向原型对象
+        // console.log(demo.prototype)
+        // console.log(d.__proto__)
+
+        //通过显示原型属性操作原型追加x
+        demo.prototype.x = 99;
+
+        // console.log(d.x)
+
+        const student = Vue.extend({
+            template:`<div>
+                <h2>stuname:{{name}}</h2>
+                <h2>age:{{age}}</h2>
+                </div>`,
+            data: function () {
+                return {
+                    name:"stuname",
+                    age:18,
+                }
+            }
+        })
+        //需要调用VueComponent
+        console.log(Vue.prototype === student.prototype.__proto__)
+
+        const vm = new Vue({
+          el: '#root',
+          data: {
+            msg:"hello"
+          },
+
+        });
+    </script>
+  </body>
+</html>

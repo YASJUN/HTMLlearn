@@ -6,13 +6,18 @@
   <body>
     <div id="root">
         <school></school>
+        <Profile></Profile>
     </div>
     <!-- 组件本为VueComponent的构造函数，是Vue.extend生成的
         只需要写组件标签， 在Vue解析时会创建school组件的实例对象。
         即 Vue执行的 new VueComponent(option)
-
+ue
         每次调用vue.extend 返回的都是一个全新的VueComponent
-    
+
+        this指向：
+        组件中 以下都是VueComponent实例对象
+
+        new vue(option)中，data,methods,watch,computed, this是vue实例对象
         -->
     <script>
         //设置为 false 以阻止 vue 在启动时生成生产提示。
@@ -47,9 +52,18 @@
             },
         })
 
+
+        let Profile = Vue.extend({
+            template:'<p> ni {{msg}}hao </p>',
+            data: function () {
+                return {
+                    msg:"123"
+                }
+            }
+        })
         new Vue({
             el:"#root",
-            components:{school}
+            components:{school,Profile}
         })
     </script>
   </body>
