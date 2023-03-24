@@ -6,5 +6,6 @@ import App from './App.vue'
 Vue.config.productionTip = false;
 // 创建vue实例
 new Vue({
-    render: createElements => createElements(app)
+    el:"#app",
+    render: createElements => createElements(App)
 })

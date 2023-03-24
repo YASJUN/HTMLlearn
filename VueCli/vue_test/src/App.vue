@@ -1,12 +1,13 @@
 <template>
   <div>
-    <School></School>
+    <School/>
   </div>
 </template>
 
 <script>
 // 引入school组件
-import School from './components/School.vue'
+import School from './components/School'
+
 export default {
     name:"App",
     components:{School}
