@@ -12,28 +12,28 @@
 <script>
 // 组件交互的代码（数据，方法）
 // 需要暴露组件
-//1. 分别暴露：export const school =  
+//1. 分别暴露：export const school =
 //2. 统一暴露：在定义完毕之后： export {school}  |  import {???} from ???
 // 3.默认暴露：export default school    |  import ??? from ???
-    export default {
-    name:"School",
-    data() {
-        return {
-        name: "schoolnames",
-        address: "schooladdress",
-        };
+export default {
+  name: "MySchool",
+  data() {
+    return {
+      name: "schoolnames",
+      address: "schooladdress",
+    };
+  },
+  methods: {
+    showname() {
+      alert(this.schoolname);
     },
-    methods: {
-        showname() {
-        alert(this.schoolname);
-        },
-    },
-    }
+  },
+};
 </script>
 
 <style>
 /* 组建的样式（css代码） */
-.demo{
-    background-color: orange;
+.demo {
+  background-color: orange;
 }
 </style>
