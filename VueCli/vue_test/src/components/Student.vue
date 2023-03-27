@@ -1,8 +1,9 @@
 <template>
   <div>
 
-    <h2 @click="showname">schoolname：{{name}}</h2>
-    <h2>schooldaddress:{{address}}</h2>
+    <h2 @click="showname">name：{{name}}</h2>
+    <h2>age:{{age}}</h2>
+    <h2>sex:{{sex}}</h2>
     <span>{{ msg }}</span>
   </div>
 </template>
@@ -14,8 +15,9 @@ export default {
     name:"Student",
     data() {
         return {
-            name:"TOHOKU",
-            address:"Tokyo",
+            name:"sam",
+            age:18,
+            sex:"lll",
             msg:"114514"
         }
     },

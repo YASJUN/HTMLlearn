@@ -73,16 +73,30 @@
 2. 使用方式：
 
    第一步定义混合：
-
+   新建一个JavaScript文件，内容为：
    ```
    {
        data(){....},
        methods:{....}
        ....
    }
+   
    ```
-
-   第二步使用混入：
+   需要对此代码块进行暴露操作。
+   ```
+   export default {mixin}
+   export const mixin = {}
+   ```
+   在模板内引用：
+   ```
+   import {mixin} from "../mixin.js"
+   ```
+   然后进行使用：
+   ```
+   mixins:[mixin]
+   ```
+   
+   使用混入：
 
    ​	全局混入：```Vue.mixin(xxx)```
    ​	局部混入：```mixins:['xxx']	```
