@@ -1,18 +1,22 @@
 <template>
   <div>
-    <Student/>
-    <school/>
+   
   </div>
 </template>
 
 <script>
-// 引入school组件
-import School from './components/School'
-import Student from './components/Student'
+import MyFooterVue from './components/MyFooter.vue'
+import MyHeaderVue from './components/MyHeader.vue'
+import MyItemVue from './components/MyItem.vue'
+import MyListVue from './components/MyList.vue'
+
+
+// 引入组件
+
 
 export default {
     name:"App",
-    components:{Student,School},
+    components:{MyFooterVue,MyHeaderVue,MyItemVue,MyListVue},
 }
 </script>
 
