@@ -1,24 +1,29 @@
 <template>
-  <div>
-   
+  <div class="app">
+    <h1>{{ msg }}</h1>
+    <Student/>
+    <school/>
   </div>
 </template>
 
 <script>
-import MyFooterVue from './components/MyFooter.vue'
-import MyHeaderVue from './components/MyHeader.vue'
-import MyListVue from './components/MyList.vue'
-
-
-// 引入组件
-
+// 引入school组件
+import School from './components/School'
+import Student from './components/Student'
 
 export default {
     name:"App",
-    components:{MyFooterVue,MyHeaderVue,MyListVue},
+    components:{Student,School},
+    data() {
+      return {
+        msg:"你好啊！"
+      }
+    },
 }
 </script>
 
-<style>
-
+<style scoped>
+  .app{
+    background-color: gray;
+  }
 </style>
