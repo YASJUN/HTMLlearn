@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      flex: 1 0 30%; /* 设置每个 div 的初始宽度为30%，可根据需要调整 */
+      min-width: 350px; /* 设置最小宽度，根据需要调整 */
+      height: 200px;
+      box-sizing: border-box;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin: 1%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">内容1</div>
+    <div class="box">内容2</div>
+    <div class="box">内容3</div>
+    <div class="box">内容3</div>
+    <div class="box">内容3</div>
+    <div class="box">内容3</div>
+    <div class="box">内容3</div>
+    <!-- 其他横向 div -->
+  </div>
+</body>
+</html>
