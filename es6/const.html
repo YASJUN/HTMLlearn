@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const常量</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 声明常量
+    const PI = 3.14;
+    console.log(PI);
+
+    // 1.const一定要声明同时赋值
+    // const PI;
+    // PI = 3.14;
+    // 上面会报错
+    // 报错信息：Missing initializer in const declaration
+    // 2.常量一般用全大写
+    // 3.常量的值不能修改
+    // PI = 3.1415926; // 报错：Assignment to constant variable.
+    // 4.块级作用域
+    // if (true) {
+    //     const PI = 3.1415926; // 这里不会影响
+    // }
+    // console.log(PI); // 这里会报错：Cannot access 'PI' before initialization
+    // 5.对于数组和对象的元素修改，不算做对常量的修改，不会报错
+    const ARR = [1, 2, 3];
+    ARR.push(4);
+    console.log(ARR); // [1, 2, 3, 4]
+</script>
+</html>
