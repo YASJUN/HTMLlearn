@@ -9,9 +9,13 @@ class art{
     // 定义一个bbb属性，类型为数字，默认值为100
     bbb = 100
     // 定义一个tempdata属性，类型为string，可选
+    //私有类
     private tempdata?:string
     // 定义一个tempdata1属性，类型为string，可选
+    //受保护
     protected tempdata1?:string
+    //静态属性
+    private static tempdata2?:string
     
 
     // 构造函数，接收两个参数，title和content
@@ -20,6 +24,7 @@ class art{
         this.title=title;
         // 设置content属性的值为传入的参数
         this.content=content;
+        art.tempdata2 = "123"
     }
 }
 
@@ -29,5 +34,6 @@ class art1 extends art{
     constructor(title:string,content:string){
         // 调用父类的构造函数，设置title和content属性的值
         super(title,content);
+        // this.tempdata
     }
 }
