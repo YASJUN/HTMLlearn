@@ -1,6 +1,9 @@
 <template>
   <!-- html -->
-  <Person/>
+  <div class="app">
+    <h1>123456</h1>
+    <Person></Person>
+  </div>
 </template>
 
 <script lang="ts">
@@ -15,4 +18,11 @@ export default {
 
 <style>
     /* css */
+    .app {
+        background: #ddd;
+        box-shadow:  0 0 20px;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+    }
 </style>
