@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指南针 & 水平仪</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e8f5ff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+            width: 300px;
+        }
+
+        h1,
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .compass {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        #arrow {
+            width: 100%;
+            height: 100%;
+            transform-origin: 50% 50%;
+            transition: transform 0.1s ease-out;
+        }
+
+        .level {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #000;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+
+        .grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid #000;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .ball {
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            /* transition: top 0.1s ease-out, left 0.1s ease-out; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>指南针方向：<span id="heading">0</span>°</h1>
+        <div class="compass">
+            <img id="arrow" src="compass-arrow.png" alt="Compass Arrow">
+        </div>
+
+        <h2>水平仪</h2>
+        <div class="level">
+            <div class="grid">
+                <div class="ball" id="ball"></div>
+            </div>
+        </div>
+
+        <button id="requestPermission">检查并请求传感器权限</button>
+    </div>
+    <!-- <script src="script.js"></script> -->
+    <script>
+        // 获取按钮和页面元素
+        const button = document.getElementById('requestPermission');
+        const headingDisplay = document.getElementById('heading');
+        const arrow = document.getElementById('arrow');
+        const ball = document.getElementById('ball');
+
+        // 监听按钮点击事件
+        button.addEventListener('click', async () => {
+            try {
+                // 检查是否需要请求权限 (iOS 13+)
+                if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                    const permission = await DeviceOrientationEvent.requestPermission();
+                    if (permission === 'granted') {
+                        startSensors();
+                    } else {
+                        alert('未授权访问传感器数据。');
+                    }
+                } else {
+                    // 非 iOS 设备，直接启动传感器监听
+                    startSensors();
+                }
+            } catch (error) {
+                console.error('请求权限时出错:', error);
+                alert('无法获取传感器权限。');
+            }
+        });
+
+        // 启动传感器监听
+        function startSensors() {
+            if (window.DeviceOrientationEvent) {
+                window.addEventListener('deviceorientation', handleOrientation);
+            } else {
+                alert('您的设备不支持传感器功能。');
+            }
+        }
+
+        // 处理传感器数据
+        function handleOrientation(event) {
+            const alpha = event.alpha;  // 获取设备方位角 (0-360°)
+            const beta = event.beta;    // 设备在 X 轴上的倾斜 (-180° ~ 180°)
+            const gamma = event.gamma;  // 设备在 Y 轴上的倾斜 (-90° ~ 90°)
+            console.log(beta, gamma)
+
+            // 更新指南针方向
+            if (alpha !== null) {
+                headingDisplay.textContent = Math.round(alpha);
+                arrow.style.transform = `rotate(${alpha}deg)`;
+            }
+
+            // 更新水平仪小球的位置
+            if (beta !== null && gamma !== null) {
+                const x = Math.min(Math.max((gamma + 90) / 180 * 100, 0), 100);
+                const y = Math.min(Math.max((beta + 180) / 360 * 100, 0), 100);
+
+                // 设置小球的偏移量
+                ball.style.left = `calc(${x}% - 10px)`;
+                ball.style.top = `calc(${y}% - 10px)`;
+            }
+        }
+
+    </script>
+</body>
+
+</html>
